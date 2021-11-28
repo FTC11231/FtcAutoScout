@@ -12,21 +12,20 @@ import java.util.List;
 
 public class DataPuller {
 
-	public static List<Integer> getTeamsInEvent(String eventKey) {
+	public static List<Integer> getTeamsInEvent(String eventKey, String apiKey) {
 		List<Integer> numbers = new ArrayList<>();
 		try {
 			HttpClient client = HttpClient.newHttpClient();
 			HttpRequest request = HttpRequest.newBuilder()
 					.uri(URI.create("https://theorangealliance.org/api/event/" + eventKey + "/teams"))
 					.header("Content-Type", "application/json")
-					.header("X-TOA-Key", Constants.API_KEY)
+					.header("X-TOA-Key", apiKey)
 					.header("X-Application-Origin", "TOA Auto Pre-scout")
 					.GET()
 					.build();
 			HttpResponse<String> response = null;
 			response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			System.out.println(response.body());
-
+			
 			Object obj = new JsonParser().parse(response.body());
 			JsonArray ja = (JsonArray) obj;
 			for (int i = 0; i < ja.size(); i++) {
@@ -40,14 +39,14 @@ public class DataPuller {
 		return numbers;
 	}
 
-	public static Team getTeamInfo(int teamNumber) {
+	public static Team getTeamInfo(int teamNumber, String apiKey) {
 		Team team = new Team();
 		try {
 			HttpClient client = HttpClient.newHttpClient();
 			HttpRequest request = HttpRequest.newBuilder()
 					.uri(URI.create("https://theorangealliance.org/api/team/" + teamNumber + "/results/2122"))
 					.header("Content-Type", "application/json")
-					.header("X-TOA-Key", Constants.API_KEY)
+					.header("X-TOA-Key", apiKey)
 					.header("X-Application-Origin", "TOA Auto Pre-scout")
 					.GET()
 					.build();
@@ -143,37 +142,3 @@ public class DataPuller {
 	}
 
 }
-
-class TeamForNumber {
-
-	String team_number;
-
-	public TeamForNumber(String event_participant_key, String event_key, String teamKey, String team_number, boolean isActive, String cardStatus, TeamForNumber team) {
-		this.team_number = team_number;
-	}
-
-	public TeamForNumber() {
-		super();
-	}
-
-	/*
-	 *
-	 * [{"team_key":"5237",
-	 * "region_key":"FIM",
-	 * "league_key":null,             ???????????????????????
-	 * "team_number":5237,
-	 * "team_name_short":"Loose Screws",
-	 * "team_name_long":"Bedford Junior High School",
-	 * "robot_name":null, ????????????????????????????????
-	 * "last_active":"2122",
-	 * "city":"Temperance",
-	 * "state_prov":"MI",
-	 * "zip_code":"48182",
-	 * "country":"USA",
-	 * "rookie_year":2011,
-	 * "website":null}]
-	 *
-	 */
-
-}
-
