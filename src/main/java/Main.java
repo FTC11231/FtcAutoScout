@@ -39,6 +39,18 @@ public class Main {
 			}
 		}
 
+		// Sort the teams by OPR
+		System.out.println("Sorting by OPR");
+		for (int i = 0; i < teams.size(); i++) {
+			for (int k = i; k < teams.size(); k++) {
+				if (teams.get(k).topOPR > teams.get(i).topOPR) {
+					Team temp = teams.get(i);
+					teams.set(i, teams.get(k));
+					teams.set(k, temp);
+				}
+			}
+		}
+
 		// Create the CSV
 		String csv = "Team Number,Team Name,WLT Ratio,Average OPR,Top OPR,Average RP,Top RP,Average Rank,Top Rank\n";
 		for (int i = 0; i < teams.size(); i++) {

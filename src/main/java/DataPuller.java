@@ -25,7 +25,7 @@ public class DataPuller {
 					.build();
 			HttpResponse<String> response = null;
 			response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			
+
 			Object obj = new JsonParser().parse(response.body());
 			JsonArray ja = (JsonArray) obj;
 			for (int i = 0; i < ja.size(); i++) {
