@@ -2,6 +2,8 @@
 
 A program that lets you easily scout teams before competitions.
 
+Credit to [team 16668](https://github.com/J-Barta/FTC-Data-Puller) for inspiring us to make this. (And for a bit of the code we weren't sure how to do)
+
 # Usage
 
 To use this program, download the JAR and run it. Then, enter in an event you would like to scout. To find an event, go to [TheOrangeAlliance](https://theorangealliance.org/events) and search for your event. Then look in the URL and copy the event code. It should look something like this:
