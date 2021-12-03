@@ -8,11 +8,45 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Get info
+		String apiKey = "";
+		String event;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please enter the event you would like to scout.");
-		String event = scanner.next();
-		System.out.println("Please enter an API key (Check README to get one)");
-		String apiKey = scanner.next();
+		event = scanner.next();
+		System.out.println("Do you want to load your API key from a file? (Y/N)");
+		String response = scanner.next();
+		if (response.toCharArray()[0] == 'Y' || response.toCharArray()[0] == 'y') {
+			// TODO: Load api key
+			File file = new File("api_key.txt");
+			try {
+				Scanner fr = new Scanner(file);
+				apiKey = fr.nextLine();
+				System.out.println("API key loaded from " + file.getAbsolutePath() + ".");
+			} catch (FileNotFoundException e) {
+				System.out.println("Error loading API key: FileNotFoundException");
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Please enter an API key. (Check README to get one)");
+			apiKey = scanner.next();
+			System.out.println("Do you want to save your API key? (Y/N)");
+			response = scanner.next();
+			if (response.toCharArray()[0] == 'Y' || response.toCharArray()[0] == 'y') {
+				// TODO: Save API key
+				File file = new File("api_key.txt");
+				try {
+					FileWriter fw = new FileWriter(file);
+					fw.write(apiKey);
+					fw.close();
+					System.out.println("API key saved to " + file.getAbsolutePath() + ".");
+				} catch (IOException e) {
+					System.out.println("Error saving API key: IOException");
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("API key not saved.");
+			}
+		}
 
 		// Gather info on all of the teams
 		int requestsLeft = 30;
