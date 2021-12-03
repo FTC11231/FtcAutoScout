@@ -2,7 +2,7 @@
 
 A program that lets you easily scout teams before competitions.
 
-Credit to [team 16668](https://github.com/J-Barta/FTC-Data-Puller) for inspiring us to make this. (And for a bit of the code we weren't sure how to do)
+Credit to [4-Gear Clovers #16668](https://github.com/J-Barta/FTC-Data-Puller) for inspiring us to make this. (And for a bit of the code we weren't sure how to do)
 
 # Usage
 
@@ -10,6 +10,6 @@ To use this program, download the JAR and run it. Then, enter in an event you wo
 ```
 2122-FIM-MRHRU
 ```
-Next, enter in an API key. To do this, go to [TheOrangeAlliance](https://theorangealliance.org/events) and in the top left, create an account if you don't have one already. Then click in that area and generate an API key. After it is generated, copy and paste it into the scouting program.
+Next, enter in an API key. To do this, go to [TheOrangeAlliance](https://theorangealliance.org/events) and in the top left, create an account if you don't have one already. Then click in that area and generate an API key. After it is generated, copy and paste it into the scouting program. If you wish, you can save this API key locally and not need to enter it again next time you use it.
 
-That's it, just watch as the program scouts your event for you. If your event has 30 or more teams, it will pause after 29 of them and wait until 60 seconds are up. This is because TheOrangeAlliance has a rate limiter of 30 requests every 60 seconds. This pause means that you won't get any incomplete data.
+That's it, just watch as the program scouts your event for you. If your event has 30 or more teams, it will pause after 30 of them and wait until 60 seconds are up. This is because TheOrangeAlliance has a rate limiter of 30 requests every 60 seconds. This pause means that you won't get any incomplete data.
